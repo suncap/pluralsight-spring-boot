@@ -10,6 +10,9 @@ import com.boot.repository.ShipwreckRepository;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class ShipwreckControllerTest {
 
 	@InjectMocks
@@ -33,6 +36,8 @@ public class ShipwreckControllerTest {
 		
 		verify(shipwreckRepository).findOne(1L); //to check stubed method was called
 		
-		assertEquals(1L, wreck.getId().longValue());
+//		assertEquals(1L, wreck.getId().longValue());
+		
+		assertThat(wreck.getId(), is(1L));
 	}
 }
